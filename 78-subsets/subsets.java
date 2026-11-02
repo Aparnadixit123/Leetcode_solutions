@@ -1,0 +1,19 @@
+class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        
+        List<List<Integer>> ans = new ArrayList<>();
+        Subsets(0, nums, new ArrayList<>(), ans);
+
+        return ans;
+    }
+    public static void Subsets(int idx,int[] nums, List<Integer> temp, List<List<Integer>> ans){
+        if(idx==nums.length){
+            ans.add(new ArrayList<>(temp));
+            return;
+        }
+        temp.add(nums[idx]);
+        Subsets(idx+1,nums,temp,ans);
+        temp.remove(temp.size()-1);
+        Subsets(idx+1,nums,temp,ans);
+    }
+}
